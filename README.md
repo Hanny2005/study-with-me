@@ -29,7 +29,7 @@ Bàn học trên trình duyệt: đồng hồ Pomodoro, âm thanh nền, danh s�
        alt="Giao diện 3" width="30%">
 </p>
 
-Tính năng
+## Tính năng
 
 |Phần|Làm được gì|
 |-|-|
