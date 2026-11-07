@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Study With Me</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Lexend:wght@300;400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+  <link rel="stylesheet" href="css/motion.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="glow" aria-hidden="true"></div>
+
+  <header class="top">
+    <div class="wrap">
+      <div class="brand"><h1>Study With Me</h1><span id="dateLine"></span></div>
+      <div class="top-actions">
+        <button class="icon-btn m-press" id="focusBtn" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+          <span class="txt">Tập trung</span>
+        </button>
+        <button class="icon-btn m-press" id="themeBtn" aria-label="Đổi giao diện sáng/tối">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap desk">
+    <section class="timer" aria-label="Đồng hồ Pomodoro" style="--i:0">
+      <div class="modes" role="tablist" aria-label="Chế độ">
+        <span class="mode-ind" aria-hidden="true"></span>
+        <button role="tab" id="m-focus" data-mode="focus" aria-selected="true">Tập trung · 25</button>
+        <button role="tab" id="m-short" data-mode="short" aria-selected="false" tabindex="-1">Nghỉ ngắn · 5</button>
+        <button role="tab" id="m-long" data-mode="long" aria-selected="false" tabindex="-1">Nghỉ dài · 15</button>
+      </div>
+
+      <div class="dial">
+        <svg viewBox="0 0 200 200" aria-hidden="true">
+          <g class="ticks" id="ticks"></g>
+          <circle class="track" cx="100" cy="100" r="86"/>
+          <circle class="prog" id="prog" cx="100" cy="100" r="86"/>
+        </svg>
+        <div class="dial-center">
+          <span class="label" id="phaseLabel">Phiên tập trung</span>
+          <div class="time" id="time" role="timer" aria-live="off">25:00</div>
+          <p class="phase" id="phase">Sẵn sàng khi bạn sẵn sàng</p>
+          <div class="dots" id="dots" aria-label="Phiên trong chu kỳ"><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="btn m-press" id="resetBtn" aria-label="Đặt lại">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+        </button>
+        <button class="btn btn-main" id="startBtn"><span id="startLabel">Bắt đầu</span></button>
+        <button class="btn m-press" id="skipBtn" aria-label="Bỏ qua phiên này">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l10 7-10 7z"/><path d="M19 5v14"/></svg>
+        </button>
+      </div>
+      <p class="now-task" id="nowTask"></p>
+      <p class="kbd"><kbd>Space</kbd> bắt đầu/tạm dừng · <kbd>R</kbd> đặt lại · <kbd>F</kbd> tập trung</p>
+    </section>
+
+    <div class="side">
+      <section class="panel" aria-labelledby="tasksTitle" style="--i:1">
+        <div class="panel-head"><h2 id="tasksTitle">Hôm nay học gì</h2><span class="sample" id="sampleTag" hidden>Ví dụ</span></div>
+        <form class="add" id="addForm">
+          <input type="text" id="taskIn" placeholder="Thêm việc, ví dụ: Ôn chương 3" autocomplete="off" aria-label="Việc cần làm">
+          <input type="number" id="pomoIn" min="1" max="8" value="1" aria-label="Số phiên ước tính">
+          <button class="btn btn-dark m-press" type="submit">Thêm</button>
+        </form>
+        <ul class="tasks" id="tasks"></ul>
+        <p class="week-note">Bấm vào tên việc để chọn việc đang làm. Số bên phải là phiên đã xong / ước tính.</p>
+      </section>
+
+      <section class="panel" aria-labelledby="soundTitle" style="--i:2">
+        <div class="panel-head"><h2 id="soundTitle">Âm thanh nền</h2><span class="label">Tạo trực tiếp</span></div>
+        <div class="sounds">
+          <div class="sound">
+            <button class="sound-btn" data-sound="rain" aria-pressed="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 15a4 4 0 0 1 0-8 5 5 0 0 1 9.6-1A4 4 0 0 1 17 15"/><path d="M8 18l-1 3M12 18l-1 3M16 18l-1 3"/></svg>
+              Mưa <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span></button>
+            <input type="range" id="vol-rain" min="0" max="1" step="0.01" value="0.5" aria-label="Âm lượng mưa">
+          </div>
+          <div class="sound">
+            <button class="sound-btn" data-sound="waves" aria-pressed="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 12c2.5-3 5-3 7.5 0s5 3 7.5 0 3.5-2 5-1"/><path d="M2 17c2.5-3 5-3 7.5 0s5 3 7.5 0 3.5-2 5-1"/></svg>
+              Sóng <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span></button>
+            <input type="range" id="vol-waves" min="0" max="1" step="0.01" value="0.4" aria-label="Âm lượng sóng">
+          </div>
+          <div class="sound">
+            <button class="sound-btn" data-sound="hum" aria-pressed="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h2M8 8v8M12 5v14M16 8v8M20 12h-2"/></svg>
+              Ồn nâu <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span></button>
+            <input type="range" id="vol-hum" min="0" max="1" step="0.01" value="0.35" aria-label="Âm lượng ồn nâu">
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="ttTitle" style="--i:3">
+        <div class="panel-head"><h2 id="ttTitle">Thời khóa biểu</h2><span class="sample" id="ttSample" hidden>Ví dụ</span></div>
+        <div class="days" role="tablist" aria-label="Chọn thứ" id="days">
+          <span class="day-ind" aria-hidden="true"></span>
+        </div>
+        <ul class="slots" id="slots" aria-live="polite"></ul>
+        <button class="btn m-press tt-add-toggle" id="ttToggle" aria-expanded="false" aria-controls="ttFormWrap"><span class="plus" aria-hidden="true">+</span> Thêm tiết</button>
+        <div id="ttFormWrap" hidden>
+          <form class="tt-form-inner" id="ttForm" novalidate>
+            <label class="tt-field" for="ttName">Môn / việc
+              <input id="ttName" placeholder="Ví dụ: Toán, Tự học JavaScript" autocomplete="off">
+            </label>
+            <div class="tt-row">
+              <label class="tt-field" for="ttDay">Thứ<select id="ttDay"></select></label>
+              <label class="tt-field" for="ttStart">Bắt đầu<input id="ttStart" type="time" value="19:30"></label>
+              <label class="tt-field" for="ttEnd">Kết thúc<input id="ttEnd" type="time" value="21:00"></label>
+            </div>
+            <label class="tt-field" for="ttRoom">Phòng / ghi chú (không bắt buộc)
+              <input id="ttRoom" placeholder="Ví dụ: P.204, mang máy tính" autocomplete="off">
+            </label>
+            <p class="tt-err" id="ttErr" aria-live="polite"></p>
+            <div class="tt-actions">
+              <span class="week-note">Lưu trên trình duyệt này.</span>
+              <button class="btn btn-dark m-press" type="submit">Lưu tiết</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+    <section class="panel grades" aria-labelledby="gTitle" style="--i:1">
+      <div class="panel-head"><h2 id="gTitle">Bảng điểm</h2><span class="sample" id="gSample" hidden>Ví dụ</span></div>
+      <div class="gpa">
+        <div class="gpa-ring">
+          <svg viewBox="0 0 100 100" aria-hidden="true"><circle class="g-track" cx="50" cy="50" r="42"/><circle class="g-prog" id="gProg" cx="50" cy="50" r="42"/></svg>
+          <div class="g-num"><strong id="gpa4">0.00</strong><small>GPA / 4</small></div>
+        </div>
+        <div class="gpa-info">
+          <span class="rank" id="gRank">Chưa có điểm</span>
+          <div class="gpa-facts">
+            <span>Hệ 10: <b id="gpa10">0.00</b></span>
+            <span>Tín chỉ: <b id="gCredits">0</b></span>
+            <span>Môn đạt: <b id="gPassed">0/0</b></span>
+          </div>
+        </div>
+      </div>
+      <div class="g-table-wrap">
+        <table class="g-table">
+          <thead><tr><th scope="col">Môn</th><th scope="col" class="num">TC</th><th scope="col" class="num">Điểm</th><th scope="col" class="num">Chữ</th><th scope="col"><span hidden>Xóa</span></th></tr></thead>
+          <tbody id="gBody"></tbody>
+        </table>
+      </div>
+      <form class="g-add" id="gForm" novalidate>
+        <input id="gName" placeholder="Tên môn" aria-label="Tên môn" autocomplete="off">
+        <input id="gTc" type="number" min="1" max="10" step="1" value="3" aria-label="Số tín chỉ">
+        <input id="gScore" type="number" min="0" max="10" step="0.1" placeholder="Điểm" aria-label="Điểm thang 10">
+        <button class="btn btn-dark m-press" type="submit">Thêm</button>
+      </form>
+      <p class="tt-err" id="gErr" aria-live="polite"></p>
+      <p class="scale-note">Quy đổi theo thang tín chỉ: A 8.5–10 = 4.0 · B+ 8.0 = 3.5 · B 7.0 = 3.0 · C+ 6.5 = 2.5 · C 5.5 = 2.0 · D+ 5.0 = 1.5 · D 4.0 = 1.0 · F dưới 4.0 = 0. GPA tính có trọng số tín chỉ.</p>
+    </section>
+  </main>
+
+  <div class="toasts" aria-live="polite"></div>
+
+  <script src="js/motion.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
