@@ -1,10 +1,33 @@
 # Study With Me
 
 Bàn học trên trình duyệt: đồng hồ Pomodoro, âm thanh nền, danh sách việc cần làm, thời khóa biểu và bảng điểm tính GPA, tất cả trong một trang. Viết bằng **HTML, CSS và JavaScript thuần**, không framework, không cần cài đặt hay build.
+<h2 align="center">📸 Giao diện website</h2>
 
+<p align="center">
+  <img src="./docs/screenshot-light.png"
+       alt="Giao diện sáng" width="86%">
+  
 
+<p align="center">
+  <img src="./docs/screenshot-dark.png"
+       alt="Giao diện tối" width="86%">
+</p>
 
-
+<p align="center">
+  <img src="./docs/Screenshot 2026-11-07 205017.png"
+       alt="Giao diện tối" width="86%">
+</p>
+<h2 align="center">📸 Giao diện Mobile</h2>
+<p align="center">
+  <img src="./docs/screenshot-mobile.png"
+       alt="Giao diện 1" width="30%">
+  &nbsp;&nbsp;
+  <img src="./docs/Screenshot 2026-11-07 200709.png"
+       alt="Giao diện 2" width="30%">
+  &nbsp;&nbsp;
+  <img src="./docs/Screenshot 2026-11-07 200722.png"
+       alt="Giao diện 3" width="30%">
+</p>
 
 Tính năng
 
