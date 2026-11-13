@@ -1,6 +1,7 @@
 # Study With Me
 
 Bàn học trên trình duyệt: đồng hồ Pomodoro, âm thanh nền, danh sách việc cần làm, thời khóa biểu và bảng điểm tính GPA, tất cả trong một trang. Viết bằng **HTML, CSS và JavaScript thuần**, không framework, không cần cài đặt hay build.
+https://hanny2005.github.io/study-with-me/
 <h2 align="center">📸 Giao diện website</h2>
 
 <p align="center">
